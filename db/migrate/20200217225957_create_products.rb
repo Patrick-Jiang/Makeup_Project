@@ -6,6 +6,8 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.float :price
       t.string :image_link
       t.string :country
+      t.references :brand, null: false, foreign_key: true
+      t.references :category, null: false, foreign_key: true
 
       t.timestamps
     end
