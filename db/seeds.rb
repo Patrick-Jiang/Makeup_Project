@@ -11,12 +11,12 @@
 require 'net/http'
 require 'json'
 require 'faker'
-url = 'http://makeup-api.herokuapp.com/api/v1/products.json'
+# url = 'http://makeup-api.herokuapp.com/api/v1/products.json'
 
-uri = URI(url)
-response = Net::HTTP.get(uri)
-makeup_jason = JSON.parse(response)
-# makeup_jason = JSON.parse(File.read('/mnt/c/Users/patri/Desktop/BIT Term 5/WEBD-2007 Full-Stack Web Development/Project_1/makeup_project/db/test_data.json'))
+# uri = URI(url)
+# response = Net::HTTP.get(uri)
+# makeup_jason = JSON.parse(response)
+makeup_jason = JSON.parse(File.read('/mnt/c/Users/patri/Desktop/BIT Term 5/WEBD-2007 Full-Stack Web Development/Project_1/makeup_project/db/test_data.json'))
 
 url = 'https://api.printful.com/countries'
 
@@ -42,6 +42,7 @@ makeup_jason.each do |key, _value|
 end
 category = category.reject { |e| e.to_s.empty? }
 brands = brands.reject { |e| e.to_s.empty? }
+tags = tags.reject { |e| e.to_s.empty? }
 
 ProductTag.destroy_all
 Tag.destroy_all
@@ -96,14 +97,8 @@ makeup_jason.each do |key|
                              category_id: category_id,
                              brand_id: brand_id)
   end
-  next if tags[0].nil? || tags[0].empty? || tags[1].nil? || tags[1].empty?
-
-  i = 0
-  loop do
+  tags.each do |x|
     ProductTag.create(product_id: product.id,
-                      tag_id: Tag.where(name: tags[i]).first.id)
-    break if i == tags.length - 1
-
-    i += 1
+                      tag_id: Tag.where(name: x).first.id)
   end
 end
