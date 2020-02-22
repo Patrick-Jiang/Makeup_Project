@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :pages
   # get 'tags/index'
   # get 'tags/show'
   # get 'products/index'
@@ -23,5 +22,8 @@ Rails.application.routes.draw do
 
   get 'tags', to: 'tags#index', as: 'tags'
   get 'tags/:id', to: 'tags#show', id: /\d+/, as: 'tag'
+
+  resources :pages
+  get ':permalink', to: 'pages#permalink', as: 'permalink'
   # For details on the DSL available within this file, see https:/ / guides.rubyonrails.org / routing.html
 end
