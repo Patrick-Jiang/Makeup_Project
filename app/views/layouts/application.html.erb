@@ -4,23 +4,31 @@
     <title>Makeup Project</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   </head>
 
   <body>
-  <header>
-    <h1>Full Stact Make Up Project</h1>
-    <p> <%= link_to "Products", root_path%> |
-        <%= link_to "Categories", categories_path%> |
-         <%= link_to "Brands", brands_path%> |
-         <%= link_to "Tags", tags_path%> |
-         <%= link_to "About", permalink_path('about_us')%></p>
+    <section class="section">
+      <div class="container">
+        <header>
+          <h1>Full Stact Make Up Project</h1>
+          <div class="navbar-item"> <%= link_to "Products", root_path%> |
+              <%= link_to "Categories", categories_path%> |
+              <%= link_to "Brands", brands_path%> |
+              <%= link_to "Tags", tags_path%> |
+              <%= link_to "About", permalink_path('about_us')%></div>
+        </header>
 
+        <%= render partial: 'shared/search' %>
+        <%= yield %>
+      </div>
+    </section>
+  </body>
 
-  </header>
-     <%= yield %>
   <footer>
     Patrick 2020 Full Stack Project
   </footer>
