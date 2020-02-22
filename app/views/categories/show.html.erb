@@ -1,2 +1,16 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h2><%= @category.name.capitalize %></h2>
+
+<p>There are <%= @category.products.count %> product in this category.</p>
+
+<h3>Product in <%= @category.name.capitalize %> are: </h3>
+<% if @category.products.empty? %>
+  <p> There are no products in this category</p>
+<% else%>
+  <ul>
+    <% @category.products.each do |product|%>
+      <li><%= product.name.capitalize %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p> <%= link_to "Home", root_path%> </p>
