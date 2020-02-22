@@ -1,2 +1,17 @@
-<h1>Tags#index</h1>
-<p>Find me in app/views/tags/index.html.erb</p>
+<% if @tags.empty?  %>
+  <p>There are no brands available.</p>
+<% else%>
+    <table>
+  <tr>
+    <th>Name</th>
+    <th>Product in Brand</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @tags.each do |tag|%>
+    <tr>
+    <td><%= link_to tag.name.capitalize , tag_path(tag)%></td>
+    <td><%= tag.products.count %> </td>
+    </tr>
+  <% end %>
+    </table>
+<% end%>

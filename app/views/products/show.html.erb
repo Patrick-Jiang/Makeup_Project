@@ -1,2 +1,17 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<% if @product.nil?  %>
+  <p>There are no categories available.</p>
+<% else%>
+ <h1><%= @product.name %></h1>
+ <p>Brands: <%= @product.brand.name %></p>
+ <p>Description: <%= @product.description %></p>
+ <p>Price: <%= @product.price %></p>
+ <p>Category: <%= @product.category.name %></p>
+ <p>Country: <%= @product.country %></p>
+ <p>Tags:
+    <% @product.tags.each do |tag| %>
+      <%= tag.name %>
+    <% end%>
+ </p>
+ <p><img src=<%= @product.image_link %> alt="Image not found" width="200" height="100" onerror="this.onerror=null;this.src='http://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-eye-shadow-palette-smokey.png';" /></p>
+
+<% end%>

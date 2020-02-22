@@ -12,9 +12,14 @@
   <body>
   <header>
     <h1>Full Stact Make Up Project</h1>
-    <p> <%= link_to "Home", root_path%> </p>
-    <%= yield %>
+    <p> <%= link_to "Products", root_path%> |
+        <%= link_to "Categories", categories_path%> |
+         <%= link_to "Brands", brands_path%> |
+         <%= link_to "Tags", tags_path%></p>
+
+
   </header>
+     <%= yield %>
   <footer>
     Patrick 2020 Full Stack Project
   </footer>
