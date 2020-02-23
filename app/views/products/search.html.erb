@@ -1,6 +1,7 @@
 <% if @products.empty?  %>
   <p>There are no categories available.</p>
 <% else%>
+
   <table>
   <tr>
     <th>Image</th>
@@ -14,5 +15,6 @@
     <td>$<%= product.price %></td>
     </tr>
   <% end %>
-    </table>
+  </table>
+
 <% end%>

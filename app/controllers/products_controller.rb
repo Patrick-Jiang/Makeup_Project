@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  include Pagy::Backend
   def index
-    @products = Product.all
+    @pagy, @products = pagy(Product.all)
   end
 
   def show

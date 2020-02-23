@@ -1,17 +1,24 @@
 <% if @product.nil?  %>
   <p>There are no categories available.</p>
 <% else%>
- <h1><%= @product.name %></h1>
- <p>Brands: <%= @product.brand.name.capitalize %></p>
- <p>Description: <%= @product.description %></p>
- <p>Price: $<%= @product.price %></p>
- <p>Category: <%= link_to @product.category.name.capitalize , category_path(@product.category)%></p>
- <p>Country: <%= @product.country %></p>
- <p>Tags:
-    <% @product.tags.each do |tag| %>
-      <%= link_to tag.name.capitalize , tag_path(tag)%>
-    <% end%>
- </p>
- <p><img src=<%= @product.image_link %> alt="Image not found" width="200" height="100" onerror="this.onerror=null;this.src='http://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-eye-shadow-palette-smokey.png';" /></p>
-
+<div class="columns">
+  <div class="column is-one-quarter">
+        <figure class="">
+          <img src=<%= @product.image_link %> alt="Image not found" width="480" height="600" onerror="this.onerror=null;this.src='http://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-eye-shadow-palette-smokey.png';" />
+        </figure>
+  </div>
+  <div class="column">
+      <h1 class="title is-2"><%= @product.name %></h1>
+      <p class="content is-medium"><strong class="title is-4">Brands:</strong> <%= link_to @product.brand.name.capitalize, brand_path(@product.brand),class: "has-text-primary" %></p>
+      <p class="content is-medium"><strong class="title is-4">Description:</strong> <%= @product.description %></p>
+      <p class="content is-medium"><strong class="title is-4">Price:</strong> $<%= @product.price %></p>
+      <p class="content is-medium"><strong class="title is-4">Category:</strong> <%= link_to @product.category.name.capitalize , category_path(@product.category),class: "has-text-primary"%></p>
+      <p class="content is-medium"><strong class="title is-4">Country:</strong> <%= @product.country %></p>
+      <p class="content is-medium"><strong class="title is-4">Tags:</strong>
+          <% @product.tags.each do |tag| %>
+            <%= link_to tag.name.capitalize , tag_path(tag),class: "has-text-primary"%>
+          <% end%>
+      </p>
+  </div>
+</div>
 <% end%>
