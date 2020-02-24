@@ -1,7 +1,7 @@
 <% if @products.empty?  %>
   <p>There are no categories available.</p>
 <% else%>
-  <div class="columns" id = "nav">
+  <div class="columns">
       <div class="column"><%= pagy_bulma_nav(@pagy).html_safe %></div>
     </div>
 <div class="columns is-multiline">
@@ -14,7 +14,7 @@
             <%= link_to product.name.capitalize , product_path(product)%>
           </p>
           <p class="title">
-          <img src=<%= product.image_link %> alt="Image not found" width="200" height="100" onerror="this.onerror=null;this.src='http://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-eye-shadow-palette-smokey.png';" />
+          <img src="<%= product.image_link %>" alt="Image not found" width="200" height="100" onerror="this.onerror=null;this.src='http://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-eye-shadow-palette-smokey.png';" />
           </p>
 
         </div>
@@ -31,7 +31,6 @@
           </p>
         </footer>
       </div>
-
   </div>
   <% end %>
 </div>
