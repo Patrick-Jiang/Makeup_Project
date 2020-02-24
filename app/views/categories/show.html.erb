@@ -1,40 +1,39 @@
-<h2><%= @category.name.capitalize %></h2>
+<h2 class="title is-3"><%= @category.name.capitalize %></h2>
+<p class="content is-medium has-text-grey-darker">There are <%= @category.products.count %> product in this category.</p>
+<p class="content is-medium has-text-grey-darker">Product in <%= @category.name.capitalize %> are: </p>
 
-<p>There are <%= @category.products.count %> product in this category.</p>
-
-<h3>Product in <%= @category.name.capitalize %> are: </h3>
 <% if @category.products.empty? %>
   <p> There are no products in this category</p>
 <% else%>
-<div class="columns is-multiline">
-  <% @category.products.each do |product|%>
-    <div class="column" >
-     <div class="card">
-        <div class="card-content">
-          <p class="subtitle">
-            <%= link_to product.name.capitalize , product_path(product)%>
-          </p>
-          <p class="title">
-          <img src="<%= product.image_link %>" alt="Image not found" width="200" height="100" onerror="this.onerror=null;this.src='http://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-eye-shadow-palette-smokey.png';" />
-          </p>
+  <div class="columns is-multiline">
+    <% @category.products.each do |product|%>
+      <div class="column" >
+      <div class="card">
+          <div class="card-content">
+            <p class="subtitle">
+              <%= link_to product.name.capitalize , product_path(product)%>
+            </p>
+            <p class="title">
+            <img src="<%= product.image_link %>" alt="Image not found" width="200" height="100" onerror="this.onerror=null;this.src='http://www.purpicks.com/wp-content/uploads/2018/03/lotus-cosmetics-usa-eye-shadow-palette-smokey.png';" />
+            </p>
 
+          </div>
+          <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>
+                Price: $<%= product.price %>
+              </span>
+            </p>
+            <p class="card-footer-item">
+              <span>
+                Made in <%= product.country %>
+              </span>
+            </p>
+          </footer>
         </div>
-        <footer class="card-footer">
-          <p class="card-footer-item">
-            <span>
-              Price: $<%= product.price %>
-            </span>
-          </p>
-          <p class="card-footer-item">
-            <span>
-              Made in <%= product.country %>
-            </span>
-          </p>
-        </footer>
-      </div>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 <% end %>
 
 <p> <%= link_to "Home", root_path%> </p>

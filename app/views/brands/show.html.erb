@@ -1,9 +1,6 @@
-
-<h2><%= @brand.name.capitalize %></h2>
-
-<p>There are <%= @brand.products.count %> product in this category.</p>
-
-<h3>Product in <%= @brand.name.capitalize %> are: </h3>
+<h2 class="title is-3"><%= @brand.name.capitalize %></h2>
+<p class="content is-medium has-text-grey-darker">There are <%= @brand.products.count %> product in this category.</p>
+<p class="content is-medium has-text-grey-darker">Product in <%= @brand.name.capitalize %> are: </p>
 <% if @brand.products.empty? %>
   <p> There are no products in this brand</p>
 <% else%>
