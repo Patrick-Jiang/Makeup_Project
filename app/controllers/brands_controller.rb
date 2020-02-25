@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class BrandsController < ApplicationController
-  include Pagy::Backend
+
   def index
-    @pagy, @brands = pagy(Brand.all, item: 9)
+   @brands = Brand.all.page(params[:page])
   end
 
   def show

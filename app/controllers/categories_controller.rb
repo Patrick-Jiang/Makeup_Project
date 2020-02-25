@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-  include Pagy::Backend
   def index
-    @pagy, @categories = pagy(Category.all)
+    @categories = Category.all.page(params[:page])
   end
 
   def show

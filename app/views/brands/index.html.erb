@@ -1,9 +1,7 @@
 <% if @brands.empty?  %>
   <p>There are no brands available.</p>
 <% else%>
-    <div class="columns">
-      <div class="column is-6"><%= pagy_bulma_nav(@pagy).html_safe %></div>
-    </div>
+  <%= paginate @brands %>
 
   <table class="table">
   <thead>
@@ -19,7 +17,5 @@
     </tr>
   <% end %>
     </table>
-    <div class="columns">
-      <div class="column is-6"><%= pagy_bulma_nav(@pagy).html_safe %></div>
-    </div>
+  <%= paginate @brands %>
 <% end%>

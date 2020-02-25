@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  include Pagy::Backend
   def index
-    @pagy, @products = pagy(Product.all)
+    @products = Product.all.page(params[:page])
   end
 
   def show
@@ -11,8 +10,15 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where('name LIKE ? AND category_id = ?',
-                              "%#{params[:search_term]}%",
-                              params[:category_id].to_s)
+    @products = if params[:category_id].blank?
+                  Product.where('name LIKE ?',
+                                "%#{params[:search_term]}%")
+                else
+                  Product.where('name LIKE ? AND category_id = ?',
+                                "%#{params[:search_term]}%",
+                                params[:category_id].to_s)
+                end
+
+    @products
   end
 end
