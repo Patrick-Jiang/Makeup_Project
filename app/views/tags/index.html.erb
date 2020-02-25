@@ -2,19 +2,29 @@
   <p>There are no tags available.</p>
 <% else%>
 <%= paginate @tags %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Product in Brand</th>
-      </tr>
-    </thead>
-      <% @tags.each do |tag|%>
-        <tr>
-        <td><%= link_to tag.name.capitalize , tag_path(tag)%></td>
-        <td><%= tag.products.count %> </td>
-        </tr>
-      <% end %>
-  </table>
+  <div class="container-fluid ">
+  <div class="row">
+    <div class="col">
+    </div>
+        <div class="col col-8">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Product in Category</th>
+          </tr>
+        </thead>
+        <% @tags.each do |tag|%>
+          <tr>
+          <td><%= link_to tag.name.capitalize , tag_path(tag)%></td>
+          <td><%= tag.products.size %> </td>
+          </tr>
+        <% end %>
+        </table>
+        </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
 <%= paginate @tags %>
 <% end%>

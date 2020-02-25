@@ -1,21 +1,37 @@
 <% if @brands.empty?  %>
   <p>There are no brands available.</p>
 <% else%>
-  <%= paginate @brands %>
 
-  <table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Product in Brand</th>
-    </tr>
-  </thead>
-  <% @brands.each do |brand|%>
-    <tr>
-      <td><%= link_to brand.name.capitalize , brand_path(brand)%></td>
-      <td><%= brand.products.count %> </td>
-    </tr>
-  <% end %>
-    </table>
-  <%= paginate @brands %>
+<div class="container pagination justify-content-center" >
+  <%= paginate @brands, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+</div>
+
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col">
+    </div>
+        <div class="col col-8">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Product in Brand</th>
+          </tr>
+        </thead>
+        <% @brands.each do |brand|%>
+          <tr>
+            <td><%= link_to brand.name.capitalize , brand_path(brand)%></td>
+            <td><%= brand.products.size %> </td>
+          </tr>
+        <% end %>
+        </table>
+        </div>
+    <div class="col">
+    </div>
+  </div>
+</div>
+
+<div class="container pagination justify-content-center" >
+  <%= paginate @brands, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm" %>
+</div>
 <% end%>

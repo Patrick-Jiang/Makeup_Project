@@ -3,7 +3,7 @@
 class TagsController < ApplicationController
   include Pagy::Backend
   def index
-    @tags = Tag.all.page(params[:page])
+    @tags = Tag.includes(:products).all.page(params[:page])
   end
 
   def show

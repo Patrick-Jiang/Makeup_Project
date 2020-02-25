@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 gem 'pagy'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap_form'
+gem 'bootstrap4-kaminari-views'
 gem 'kaminari'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

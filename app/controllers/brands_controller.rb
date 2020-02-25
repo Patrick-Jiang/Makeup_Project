@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class BrandsController < ApplicationController
-
   def index
-   @brands = Brand.all.page(params[:page])
+    @brands = Brand.includes(:products).all.page(params[:page])
   end
 
   def show
